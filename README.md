@@ -3,6 +3,7 @@
 Upper Beginner Python programmer embarking on a mini project mainly to learn how to use git & github, while sharpeing my OOP, data vis and webscraper/api skills.
 
 Goals of the project:
+
     • Add fiat invested
     
     • Add coins and their quantities

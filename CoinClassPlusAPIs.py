@@ -2,6 +2,7 @@ from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 
+# hideAPI's for github???
 # BTC conversion Data
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
@@ -12,7 +13,7 @@ parameters = {
 }
 headers = {
     'Accepts': 'application/json',
-    'X-CMC_PRO_API_KEY': '033af9b8-dc05-4b89-8283-cca2dd23d0db',
+    'X-CMC_PRO_API_KEY': 'config.api_key',
 }
 
 session = Session()

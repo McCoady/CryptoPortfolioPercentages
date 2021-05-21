@@ -93,3 +93,38 @@ class Coin():
 
     def __str__(self):
         return f"{self.name}({self.ticker}) = ${round(self.convertcoinUS(),2)} £{round(self.convertcoinUK(),2)} {self.convertcoinBTC()}BTC"
+
+
+# Coin Class inputs
+BTC = Coin('Bitcoin', 'BTC')
+ETH = Coin('Ethereum', 'ETH')
+BNB = Coin('Binance Coin', 'BNB')
+XRP = Coin('Ripple', 'XRP')
+ADA = Coin('Cardano', 'ADA')
+DOGE = Coin('Dogecoin', 'DOGE')
+USDT = Coin('Tether', 'USDT')
+DOT = Coin('Polkadot', 'DOT')
+BCH = Coin('Bitcoin Cash', 'BCH')
+LTC = Coin('Litecoin', 'LTC')
+LINK = Coin('Chainlink', 'LINK')
+UNI = Coin('Uniswap', 'UNI')
+USDC = Coin('USD Coin', 'USDC')
+SOL = Coin('Solana', 'SOL')
+MATIC = Coin('Polygon', 'MATIC')
+XLM = Coin('Stellar', 'XLM')
+ETC = Coin('Ethereum Classic', 'ETC')
+VET = Coin('VeChain', 'VET')
+THETA = Coin('Theta Network', 'THETA')
+EOS = Coin('EOS', 'EOS')
+TRX = Coin('Tron', 'TRX')
+AAVE = Coin('AAVE', 'AAVE')
+BUSD = Coin('Binance USD', 'BUSD')
+SHIB = Coin('Shiba Inu', 'SHIB')
+WBTC = Coin('Wrapped Bitcoin', 'BTC')
+FIL = Coin('Filecoin', 'FIL')
+OKB = Coin('OKB', 'OKB')
+NEO = Coin('NEO', 'NEO')
+XMR = Coin('Monero', 'XMR')
+LUNA = Coin('Luna', 'LUNA')
+# Coins 31+ in market cap (except algorand) missing
+ALGO = Coin('Alogrand', 'ALGO')

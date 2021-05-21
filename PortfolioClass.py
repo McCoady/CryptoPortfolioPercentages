@@ -34,10 +34,27 @@ class Portfolio():
             f'{amount}{coin} added to your portfolio, total {coin}: {self.coins[coin]}')
 
     def overview(self, currency):
+        coinvalues = []
+        coinquantity = []
+        coins = []
         if currency == 'GBP':
             for coin in self.coins:
+                value = coin.convertcoinUK()*self.coins[coin]
+                coinquantity.append(self.coins[coin])
+                coinvalues.append(value)
+                coins.append(coin.ticker)
+                # add to total portfolio amount
+                total = 0
+                for i in coinvalues:
+                    total += i
+                print(f'{coin}: {value}')
+            print(f'Total portfolio value: {total}')
+            print(coins, coinquantity, coinvalues)
+            df = pd.DataFrame(
+                {'Coin': coins, 'Amount': coinquantity, 'Value GBP': coinvalues})
+            df['Portfolio %'] = round((df['Value GBP']/sum(coinvalues)*100), 2)
 
-                print(f'{coin}: {coin.convertcoinUK()*self.coins[coin]}')
+            return df
         elif currency == 'USD':
             for coin in self.coins:
                 print(f'{coin}: {coin.convertcoinUS()*self.coins[coin]}')

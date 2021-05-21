@@ -1,3 +1,8 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 class Portfolio():
 
     def __init__(self, name, currencytype, currencyin):
@@ -34,15 +39,98 @@ class Portfolio():
             f'{amount}{coin} added to your portfolio, total {coin}: {self.coins[coin]}')
 
     def overview(self, currency):
+        coinvalues = []
+        coinquantity = []
+        coins = []
         if currency == 'GBP':
             for coin in self.coins:
+                value = coin.convertcoinUK()*self.coins[coin]
+                coinquantity.append(self.coins[coin])
+                coinvalues.append(value)
+                coins.append(coin.ticker)
+                # add to total portfolio amount
+                total = 0
+                for i in coinvalues:
+                    total += i
+                print(f'{coin}: {value}')
+            print(f'Total portfolio value: {total}')
 
-                print(f'{coin}: {coin.convertcoinUK()*self.coins[coin]}')
+            # coin list data frame
+            df = pd.DataFrame(
+                {'Coin': coins, 'Amount': coinquantity, 'Value GBP': coinvalues})
+            df['Portfolio %'] = round((df['Value GBP']/sum(coinvalues)*100), 2)
+
+            # Pie Chart (donut chart?)
+            my_circle = plt.Circle((0, 0), 0.75, color='white')
+            fig = plt.figure()
+            ax = fig.add_axes([0, 0, 1, 1])
+            ax.axis('equal')
+            ax.pie(coinvalues, labels=coins, autopct='%1.1f%%',
+                   labeldistance=1.05, startangle=90)
+            plt.gca().add_artist(my_circle)
+            plt.show()
+
+            return df
+
         elif currency == 'USD':
             for coin in self.coins:
-                print(f'{coin}: {coin.convertcoinUS()*self.coins[coin]}')
+                value = coin.convertcoinUS()*self.coins[coin]
+                coinquantity.append(self.coins[coin])
+                coinvalues.append(value)
+                coins.append(coin.ticker)
+                # add to total portfolio amount
+                total = 0
+                for i in coinvalues:
+                    total += i
+                print(f'{coin}: {value}')
+            print(f'Total portfolio value: {total}')
+
+            # coin list data frame
+            df = pd.DataFrame(
+                {'Coin': coins, 'Amount': coinquantity, 'Value USD': coinvalues})
+            df['Portfolio %'] = round((df['Value USD']/sum(coinvalues)*100), 2)
+
+            # Pie Chart (donut chart?)
+            my_circle = plt.Circle((0, 0), 0.75, color='white')
+            fig = plt.figure()
+            ax = fig.add_axes([0, 0, 1, 1])
+            ax.axis('equal')
+            ax.pie(coinvalues, labels=coins, autopct='%1.1f%%',
+                   labeldistance=1.05, startangle=90)
+            plt.gca().add_artist(my_circle)
+            plt.show()
+
+            return df
+
         elif currency == 'BTC':
             for coin in self.coins:
-                print(f'{coin}: {coin.convertcoinBTC()*self.coins[coin]}')
+                value = coin.convertcoinBTC()*self.coins[coin]
+                coinquantity.append(self.coins[coin])
+                coinvalues.append(value)
+                coins.append(coin.ticker)
+                # add to total portfolio amount
+                total = 0
+                for i in coinvalues:
+                    total += i
+                print(f'{coin}: {value}')
+            print(f'Total portfolio value: {total}')
+
+            # coin list data frame
+            df = pd.DataFrame(
+                {'Coin': coins, 'Amount': coinquantity, 'Value BTC': coinvalues})
+            df['Portfolio %'] = round((df['Value BTC']/sum(coinvalues)*100), 2)
+
+            # Pie Chart (donut chart?)
+            my_circle = plt.Circle((0, 0), 0.75, color='white')
+            fig = plt.figure()
+            ax = fig.add_axes([0, 0, 1, 1])
+            ax.axis('equal')
+            ax.pie(coinvalues, labels=coins, autopct='%1.1f%%',
+                   labeldistance=1.05, startangle=90)
+            plt.gca().add_artist(my_circle)
+            plt.show()
+
+            return df
+
         else:
             print('Sorry this currency is not currently supported.')
